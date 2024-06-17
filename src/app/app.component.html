@@ -1,0 +1,21 @@
+<!-- app.component.html -->
+<div class="container">
+    <div class="column">
+      <h2>All Operation JS Side</h2>
+      <button (click)="runMatrixMultiplication()">Start Operation</button>
+      <p>Time Taken of Matrix Multiplication of Size {{matrixSize}}: {{ executionTime11 }} ms</p>
+      <button (click)="analyzeDistribution()">Start Distribution Analysis</button>
+      <p>Time Taken for Distribution Analysis: {{ executionTime12 }} ms</p>
+      <canvas #canvas></canvas>
+    </div>
+    <div class="column">
+      <h2>Computation on Rust</h2>
+      <button (click)="runMatrxiMultiplicationOnRust()">Start Operation</button>
+      <p>Time Taken of Matrix Multiplication of Size {{matrixSize}}: {{ executionTime21 }} ms</p>
+    </div>
+    <div class="column">
+      <h2>Simple Rendering on Rust</h2>
+      <canvas id="rustCanvas" width="300" height="300"></canvas>
+    </div>
+  </div>
+  

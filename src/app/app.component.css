@@ -1,0 +1,15 @@
+/* app.component.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+  
+.column {
+    flex: 1; /* Each column takes equal width */
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc; /* Optional: adds a border around each column */
+    margin: 5px; /* Optional: adds space between columns */
+}
+  
