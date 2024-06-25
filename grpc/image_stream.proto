@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package image_stream;
+
+service ImageStream {
+  rpc StreamImages(Empty) returns (stream ImageData) {}
+}
+
+message Empty {}
+
+message ImageData {
+  string name = 1;
+  bytes data = 2;
+}
