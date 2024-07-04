@@ -29,6 +29,8 @@ export class AppComponent  {
       this.wasmModule = await import('../../wasm/pkg/rust_webpack_template');
       this.wasmModule.main_js();
       this.wasmModule.draw();
+      const result = await this.wasmModule.get_image_diff_array("https://i.imgur.com/5YuMlQC.jpeg", "https://i.imgur.com/5YuMlQC.jpeg");
+      console.log(result);
     };
     init();
   }
