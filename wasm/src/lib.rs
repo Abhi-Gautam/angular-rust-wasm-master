@@ -139,10 +139,25 @@ pub async fn get_image_diff_array(url1: &str, url2: &str) -> Result<JsValue, JsV
     }
 
     // Convert the diff image to an array of grayscale values
+    let mut gray_values1 = Array::new();
+    for pixel in gray_img1.pixels() {
+        gray_values1.push(&JsValue::from(pixel[0]));
+    }
+
+    let mut gray_values2 = Array::new();
+    for pixel in gray_img2.pixels() {
+        gray_values2.push(&JsValue::from(pixel[0]));
+    }
+
     let mut diff_values = Array::new();
     for pixel in diff_img.pixels() {
         diff_values.push(&JsValue::from(pixel[0]));
     }
 
-    Ok(diff_values.into())
+    let result = js_sys::Object::new();
+    js_sys::Reflect::set(&result, &JsValue::from_str("gray1"), &gray_values1.into())?;
+    js_sys::Reflect::set(&result, &JsValue::from_str("gray2"), &gray_values2.into())?;
+    js_sys::Reflect::set(&result, &JsValue::from_str("diff"), &diff_values.into())?;
+
+    Ok(result.into())
 }
